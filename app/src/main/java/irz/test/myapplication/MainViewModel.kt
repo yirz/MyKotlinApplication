@@ -8,7 +8,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 
+
+
 class MainViewModel (): ViewModel(){
+    init {get_films_tendance()}
+
     val apikey = "317519a83cc36ab9367ba50e5aa75b40"
 
     val movies = MutableStateFlow<List<Film>>(listOf())
@@ -17,6 +21,8 @@ class MainViewModel (): ViewModel(){
         .baseUrl("https://api.themoviedb.org/3/")
         .addConverterFactory(MoshiConverterFactory.create())
         .build();
+
+
 
     val api = retrofit.create(TmdbAPI::class.java)
 
