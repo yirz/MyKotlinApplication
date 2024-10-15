@@ -37,8 +37,6 @@ fun Screen(
         verticalArrangement = Arrangement.Center
 
     ) {
-
-
         PhotoPro()
         Spacer(modifier = Modifier.size(20.dp))
         Presentation()
@@ -63,9 +61,7 @@ fun PhotoPro(){
             .size(200.dp)
             .clip(CircleShape)
     )
-
 }
-
 
 @Composable
 fun Presentation() {
@@ -74,10 +70,6 @@ fun Presentation() {
         Text(text= "Eleve en école d'ingénieur 4e année")
         Text(text= "Ecole d'ingénieur ISIS - INU Champolion")
     }
-
-
-
-
 }
 
 @Composable
@@ -89,9 +81,6 @@ fun LiensMail() {
         )
         Text(text = "  yann.irz@gmail.com")
     }
-
-
-
 }
 
 @Composable
@@ -103,6 +92,5 @@ fun  LiensLinkedin(){
         )
         Text(text=" linesverslinkedin.com")
     }
-
 }
 
