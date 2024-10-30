@@ -65,8 +65,11 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material.v151) // Vérifie la dernière version
     implementation(libs.ui)
+    implementation(libs.coil.compose)
     implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.navigation.compose.v273) // Pour la navigation compose
+    implementation(libs.androidx.navigation.compose.v273)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android) // Pour la navigation compose
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
