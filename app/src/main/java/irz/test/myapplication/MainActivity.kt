@@ -1,12 +1,14 @@
 package irz.test.myapplication
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.materialIcon
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
@@ -27,6 +29,9 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 
 
 class MainActivity : ComponentActivity() {
@@ -52,26 +57,67 @@ fun MyApp(modifier: Modifier = Modifier) {
         bottomBar = {
             if(currentDestination?.route != "Profil") {
                 BottomNavigation(contentColor = MaterialTheme.colorScheme.primary,)
+                //item profil
                 { BottomNavigationItem(
-                    icon = {/**
-                    Image(
-                    painterResource(id = R.drawable.clap_bis),
-                    contentDescription = "logo films",
-                    )*/
+                    icon = {
                         Icon(
                             imageVector = Icons.Default.Face,
-                            contentDescription = "icone search"
+                            contentDescription = "icone profil",
+                            modifier = Modifier.size(35.dp),
+                            tint = Color.Black,
                         )
                     },
-                    label = { Text("Films") },
+                    label = { Text("Profil") },
                     selected = false,
                     onClick = {
-                        navController.navigate("FilmsComposant")
-                    })}
+                        navController.navigate("Profil")
 
+                    })
+                    //item Films
+                    BottomNavigationItem(
+                        icon = {
+                            Image(
+                                painterResource(id = R.drawable.films),
+                                contentDescription = "logo Films",
+                                modifier = Modifier.size(35.dp) // Adjust the size here
+                            )
+                        },
+                        label = { Text("Films") },
+                        selected = false,
+                        onClick = {
+                            navController.navigate("Films")
+                        })
 
+                    //item Series
+                    BottomNavigationItem(
+                        icon = {
+                            Image(
+                                painterResource(id = R.drawable.series),
+                                contentDescription = "logo series",
+                                modifier = Modifier.size(35.dp) // Adjust the size here
+                            )
+                        },
+                        label = { Text("Series") },
+                        selected = false,
+                        onClick = {
+                            navController.navigate("Series")
+                        })
 
-
+                    //item Actors
+                    BottomNavigationItem(
+                        icon = {
+                            Image(
+                                painterResource(id = R.drawable.actor),
+                                contentDescription = "logo acteurs",
+                                modifier = Modifier.size(35.dp) // Adjust the size here
+                            )
+                        },
+                        label = { Text("Acteurs") },
+                        selected = false,
+                        onClick = {
+                            navController.navigate("Acteurs")
+                        })
+                }
 
             }
         }
@@ -82,7 +128,10 @@ fun MyApp(modifier: Modifier = Modifier) {
             startDestination = "Profil"
         ) {
             composable("Profil") { Screen(navController) }
-            composable("Films") { Films(navController, viewModel()) }
+            composable("Films") { Films(navController, viewModel())}
+            composable("Series") {Series(navController, viewModel())}
+            composable("Acteurs") {Acteurs(navController, viewModel())}
+
         }
 
     }

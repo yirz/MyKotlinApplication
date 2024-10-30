@@ -16,6 +16,8 @@ class MainViewModel (): ViewModel(){
 
     val movies = MutableStateFlow<List<Film>>(listOf())
 
+    val actors = MutableStateFlow<List<Acteur>>(listOf())
+
     val service = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/")
         .addConverterFactory(MoshiConverterFactory.create())
@@ -26,6 +28,11 @@ class MainViewModel (): ViewModel(){
         viewModelScope.launch {
             movies.value = service.films_tendance(apikey).results
         }
+        }
+        fun get_acteurs_tendance(){
+            viewModelScope.launch {
+                actors.value = service.acteurs_tendance(apikey).results
+            }
+        }
     }
 
-}
