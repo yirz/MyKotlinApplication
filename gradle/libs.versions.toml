@@ -24,6 +24,7 @@ navigationCompose = "2.8.2"
 ui = "1.7.3"
 uiToolingPreview = "1.7.3"
 foundationLayoutAndroid = "1.7.2"
+media3CommonKtx = "1.4.1"
 
 [libraries]
 androidx-contentpager = { module = "androidx.contentpager:contentpager", version.ref = "contentpager" }
@@ -58,6 +59,7 @@ ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
+androidx-media3-common-ktx = { group = "androidx.media3", name = "media3-common-ktx", version.ref = "media3CommonKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
