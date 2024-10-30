@@ -2,6 +2,7 @@ package irz.test.myapplication
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -18,6 +19,8 @@ class MainViewModel (): ViewModel(){
 
     val actors = MutableStateFlow<List<Acteur>>(listOf())
 
+    val shows = MutableStateFlow<List<Serie>>(listOf())
+
     val service = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/")
         .addConverterFactory(MoshiConverterFactory.create())
@@ -29,10 +32,15 @@ class MainViewModel (): ViewModel(){
             movies.value = service.films_tendance(apikey).results
         }
         }
-        fun get_acteurs_tendance(){
-            viewModelScope.launch {
-                actors.value = service.acteurs_tendance(apikey).results
+    fun get_acteurs_tendance(){
+        viewModelScope.launch {
+            actors.value = service.acteurs_tendance(apikey).results
             }
         }
+    fun get_series_tendance(){
+        viewModelScope.launch {
+            shows.value = service.series_tendance(apikey).results
+        }
+    }
     }
 

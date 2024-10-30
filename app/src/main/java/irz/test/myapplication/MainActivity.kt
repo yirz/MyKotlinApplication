@@ -113,7 +113,7 @@ fun MyApp(modifier: Modifier = Modifier) {
                             )
                         },
                         label = { Text("Acteurs") },
-                        selected = false,
+                        selected = currentDestination?.route == "Acteurs",
                         onClick = {
                             navController.navigate("Acteurs")
                         })
