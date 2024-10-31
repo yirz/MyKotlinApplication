@@ -43,7 +43,7 @@ fun Films(
         ) {
             items(films) { film ->
                 CarteFilm(film, navcontroller, modifier = Modifier.clickable {
-                    //Log.v("filmid", film.id.toString())
+
                     navcontroller.navigate("FilmDetail/" + film.id)
                 })
             }

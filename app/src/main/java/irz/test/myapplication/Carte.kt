@@ -19,7 +19,7 @@ import coil.compose.AsyncImage
 fun Carte (
     modifier : Modifier,
     route : String,
-    chemin_img : String,
+    chemin_img : String?,
     titre : String,
     date : String?,
     navController: NavController
