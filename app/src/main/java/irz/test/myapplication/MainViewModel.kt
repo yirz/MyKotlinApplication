@@ -7,8 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-
-
+import retrofit2.http.Query
 
 
 class MainViewModel (): ViewModel(){
@@ -42,5 +41,21 @@ class MainViewModel (): ViewModel(){
             shows.value = service.series_tendance(apikey).results
         }
     }
+    fun recherche_films(query: String){
+        viewModelScope.launch {
+            movies.value = service.recherche_films(apikey, query).results
+        }
+    }
+    fun recherche_series(query: String){
+        viewModelScope.launch {
+            shows.value = service.recherche_series(apikey, query).results
+        }
+    }
+    fun recherche_acteurs(query: String){
+        viewModelScope.launch {
+            actors.value = service.recherche_acteurs(apikey, query).results
+        }
+    }
+
     }
 
