@@ -44,12 +44,13 @@ fun Films(
             items(films) { film ->
                 CarteFilm(film, navcontroller, modifier = Modifier.clickable {
 
-                    navcontroller.navigate("FilmDetail/" + film.id)
+                    navcontroller.navigate("DetailFilm/" + film.id)
                 })
             }
         }
     }
 }
+
     @Composable
     fun CarteFilm(film: Film, navController: NavController, modifier: Modifier) {
         Carte(

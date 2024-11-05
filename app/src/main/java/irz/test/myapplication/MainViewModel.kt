@@ -1,5 +1,6 @@
 package irz.test.myapplication
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -19,6 +20,10 @@ class MainViewModel (): ViewModel(){
     val actors = MutableStateFlow<List<Acteur>>(listOf())
 
     val shows = MutableStateFlow<List<Serie>>(listOf())
+
+    val movie = MutableStateFlow(Film())
+
+    val show = MutableStateFlow(Serie())
 
     val service = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/")
@@ -41,9 +46,10 @@ class MainViewModel (): ViewModel(){
             shows.value = service.series_tendance(apikey).results
         }
     }
-    fun recherche_films(query: String){
+    fun get_recherche_films(query: String){
         viewModelScope.launch {
             movies.value = service.recherche_films(apikey, query).results
+            Log.v("zzzzz", ("Jusqu'ici tout va bien:" + movies.value[0].title))
         }
     }
     fun recherche_series(query: String){
@@ -54,6 +60,17 @@ class MainViewModel (): ViewModel(){
     fun recherche_acteurs(query: String){
         viewModelScope.launch {
             actors.value = service.recherche_acteurs(apikey, query).results
+        }
+    }
+
+    fun film_detail(id: String) {
+        viewModelScope.launch {
+            movie.value = service.detail_film(id, apikey)
+        }
+    }
+    fun serie_detail(id: String){
+        viewModelScope.launch {
+            show.value=service.detail_serie(id, apikey)
         }
     }
 

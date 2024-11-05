@@ -49,7 +49,7 @@ fun CarteSeries(series : Serie, navController: NavController, modifier: Modifier
         modifier = Modifier,
         route = "filmDetail/" + series.id,
         chemin_img = series.poster_path,
-        titre = series.original_name,
+        titre = series.name,
         date = series.first_air_date,
         navController = navController,
     )

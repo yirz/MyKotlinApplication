@@ -3,6 +3,7 @@ package irz.test.myapplication
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -15,7 +16,7 @@ import androidx.compose.material.icons.materialIcon
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -87,21 +88,22 @@ class MainActivity : ComponentActivity() {
                             query = text,
                             onQueryChange = { text = it },
                             onSearch = {
+                                active = false
+
                                 if (currentDestination?.route == "Films") {
-                                    viewmodel.recherche_films(it)
-                                    active = false
+                                    println(it)
+                                    Log.v("zzzzz", "search")
                                 } else if (currentDestination?.route == "Acteurs") {
                                     viewmodel.recherche_acteurs(it)
-                                    active = false
                                 } else if (currentDestination?.route == "Series") {
-                                    viewmodel.recherche_acteurs(it)
-                                    active = false
+                                    viewmodel.recherche_series(it)
+
                                 }
                             },
                             active = active,
                             onActiveChange = { active = it },
                             placeholder = {
-                                Text(text = "Search")
+                                Text(text = "Chercher")
                             }
                         ) {
                         }
@@ -182,9 +184,9 @@ class MainActivity : ComponentActivity() {
                     startDestination = "Profil"
                 ) {
                     composable("Profil") { Screen(navController) }
-                    composable("Films") { Films(navController, viewModel()) }
-                    composable("Series") { Series(navController, viewModel()) }
-                    composable("Acteurs") { Acteurs(navController, viewModel()) }
+                    composable("Films") { Films(navController, viewmodel) }
+                    composable("Series") { Series(navController, viewmodel) }
+                    composable("Acteurs") { Acteurs(navController, viewmodel) }
                 }
             }
         }
