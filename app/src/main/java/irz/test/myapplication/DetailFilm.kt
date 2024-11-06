@@ -10,4 +10,5 @@ fun DetailFilm (navController: NavController, viewModel: MainViewModel, id : Str
         viewModel.film_detail(id)
     }
 
+
 }
