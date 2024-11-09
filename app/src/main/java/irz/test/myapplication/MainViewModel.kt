@@ -22,6 +22,11 @@ class MainViewModel (): ViewModel(){
     val shows = MutableStateFlow<List<Serie>>(listOf())
 
     val movie = MutableStateFlow(Film())
+    fun film_detail(id: String) {
+        viewModelScope.launch {
+            movie.value = service.detail_film(id, apikey)
+        }
+    }
 
     val show = MutableStateFlow(Serie())
 
@@ -46,10 +51,9 @@ class MainViewModel (): ViewModel(){
             shows.value = service.series_tendance(apikey).results
         }
     }
-    fun get_recherche_films(query: String){
+    fun recherche_films(query: String){
         viewModelScope.launch {
             movies.value = service.recherche_films(apikey, query).results
-            Log.v("zzzzz", ("Jusqu'ici tout va bien:" + movies.value[0].title))
         }
     }
     fun recherche_series(query: String){
@@ -63,16 +67,8 @@ class MainViewModel (): ViewModel(){
         }
     }
 
-    fun film_detail(id: String) {
-        viewModelScope.launch {
-            movie.value = service.detail_film(id, apikey)
-        }
-    }
-    fun serie_detail(id: String){
-        viewModelScope.launch {
-            show.value=service.detail_serie(id, apikey)
-        }
-    }
+    val filmDetail = MutableStateFlow(FilmDetail())
+    val serieDetail = MutableStateFlow(SerieDetail())
 
     }
 

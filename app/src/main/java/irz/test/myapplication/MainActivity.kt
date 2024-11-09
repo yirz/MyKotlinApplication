@@ -49,17 +49,14 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val viewmodel: MainViewModel by viewModels()
 
         setContent {
-
             val navController: NavHostController = rememberNavController()
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentDestination = navBackStackEntry?.destination
             var text by remember { mutableStateOf("") }
             var active by remember { mutableStateOf(false) }
-
 
             Scaffold(
                 topBar = {
@@ -74,6 +71,13 @@ class MainActivity : ComponentActivity() {
                             trailingIcon = {
                                 Icon(
                                     modifier = Modifier.clickable {
+                                        if (currentDestination?.route == "Films") {
+                                            viewmodel.get_films_tendance()
+                                        } else if (currentDestination?.route == "Acteurs") {
+                                            viewmodel.get_acteurs_tendance()
+                                        } else if (currentDestination?.route == "Series") {
+                                            viewmodel.get_series_tendance()
+                                        }
                                         if (text.isNotEmpty()) {
                                             text = ""
                                         } else {
@@ -89,15 +93,12 @@ class MainActivity : ComponentActivity() {
                             onQueryChange = { text = it },
                             onSearch = {
                                 active = false
-
                                 if (currentDestination?.route == "Films") {
-                                    println(it)
-                                    Log.v("zzzzz", "search")
+                                    viewmodel.recherche_films(it)
                                 } else if (currentDestination?.route == "Acteurs") {
                                     viewmodel.recherche_acteurs(it)
                                 } else if (currentDestination?.route == "Series") {
                                     viewmodel.recherche_series(it)
-
                                 }
                             },
                             active = active,
@@ -190,8 +191,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-
-        }
+    }
     }
 
 
