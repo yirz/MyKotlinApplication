@@ -17,11 +17,11 @@ import coil.compose.AsyncImage
 
 @Composable
 fun Carte (
-    modifier : Modifier,
-    route : String,
-    chemin_img : String?,
-    titre : String,
-    date : String?,
+    modifier: Modifier,
+    route: String,
+    chemin_img: String?,
+    titre: String,
+    date: String?,
     navController: NavController
     ) {
     androidx.compose.material3.Card(

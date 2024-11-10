@@ -1,16 +1,12 @@
 package irz.test.myapplication
 //https://api.themoviedb.org/3/trending/movie/week?api_key=317519a83cc36ab9367ba50e5aa75b40&language=fr
 
-import android.util.Log
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -43,22 +39,22 @@ fun Films(
         ) {
             items(films) { film ->
                 CarteFilm(film, navcontroller, modifier = Modifier.clickable {
-
                     navcontroller.navigate("DetailFilm/" + film.id)
                 })
             }
         }
     }
 }
-
     @Composable
     fun CarteFilm(film: Film, navController: NavController, modifier: Modifier) {
         Carte(
-            modifier = Modifier,
-            route = "filmDetail/" + film.id,
+
+            modifier = modifier,
+            route = "DetailFilm/" + film.id,
             chemin_img = film.poster_path,
             titre = film.title,
             date = film.release_date,
             navController = navController,
+
         )
     }

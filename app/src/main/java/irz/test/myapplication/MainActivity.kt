@@ -1,5 +1,6 @@
 package irz.test.myapplication
 
+
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import android.os.Bundle
@@ -188,6 +189,15 @@ class MainActivity : ComponentActivity() {
                     composable("Films") { Films(navController, viewmodel) }
                     composable("Series") { Series(navController, viewmodel) }
                     composable("Acteurs") { Acteurs(navController, viewmodel) }
+
+                    composable("DetailFilm/{filmId}") {
+                        val id =it.arguments?.getString("filmId")?:""
+                        DetailFilm(
+                            navController,
+                            viewmodel,
+                            id
+                        )
+                    }
                 }
             }
         }

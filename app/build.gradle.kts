@@ -70,6 +70,9 @@ dependencies {
     implementation(libs.androidx.navigation.compose.v273)
     implementation(libs.androidx.foundation.layout.android)
     implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
     //implementation(libs.androidx.media3.common.ktx) // Pour la navigation compose
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
