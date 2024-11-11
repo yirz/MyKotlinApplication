@@ -5,8 +5,6 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TmdbAPI{
-
-
     @GET("trending/movie/week")
     suspend fun films_tendance(@Query("api_key") api_key:String): Films
 
@@ -26,11 +24,14 @@ interface TmdbAPI{
     suspend fun recherche_acteurs(@Query("api_key") api_key: String, @Query("query") query:String): Acteurs
 
     @GET("movie/{filmId}?language=fr")
-    suspend fun detail_film(@Path("filmId") filmId : String?, @Query("api_key") api_key: String): Film
+    suspend fun detail_film(@Path("filmId") filmId : Int, @Query("api_key") api_key: String): FilmDetail
 
     @GET("tv/{serieId}?language=fr")
     suspend fun detail_serie(@Path("filmId") filmId: String?, @Query("api_key") api_key: String): Serie
 
+    @GET("movie/{filmId}?append-to-response=credits&language=fr")
+    suspend fun casting_film(@Path("filmId") filmId: String?, @Query("api_key") api_key: String): FilmDetail
 
-
+    @GET("movie/{filmId}?append-to-response=credits&language=fr")
+    suspend fun casting_serie(@Path("serieId") serieId: String?, @Query("api_key") api_key: String): SerieDetail
 }

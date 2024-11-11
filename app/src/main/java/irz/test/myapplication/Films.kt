@@ -1,6 +1,7 @@
 package irz.test.myapplication
 //https://api.themoviedb.org/3/trending/movie/week?api_key=317519a83cc36ab9367ba50e5aa75b40&language=fr
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -48,13 +49,11 @@ fun Films(
     @Composable
     fun CarteFilm(film: Film, navController: NavController, modifier: Modifier) {
         Carte(
-
             modifier = modifier,
             route = "DetailFilm/" + film.id,
             chemin_img = film.poster_path,
             titre = film.title,
             date = film.release_date,
-            navController = navController,
-
+            navController,
         )
     }

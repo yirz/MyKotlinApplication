@@ -21,14 +21,22 @@ class MainViewModel (): ViewModel(){
 
     val shows = MutableStateFlow<List<Serie>>(listOf())
 
-    val movie = MutableStateFlow(Film())
-    fun film_detail(id: String) {
+    val movie = MutableStateFlow<FilmDetail?>(null)
+
+    val show = MutableStateFlow(Serie())
+
+    val filmDetail = MutableStateFlow(FilmDetail())
+
+    val serieDetail = MutableStateFlow(SerieDetail())
+
+
+    fun film_detail(id: Int) {
         viewModelScope.launch {
             movie.value = service.detail_film(id, apikey)
         }
     }
 
-    val show = MutableStateFlow(Serie())
+
 
     val service = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/")
@@ -67,8 +75,17 @@ class MainViewModel (): ViewModel(){
         }
     }
 
-    val filmDetail = MutableStateFlow(FilmDetail())
-    val serieDetail = MutableStateFlow(SerieDetail())
 
+    fun film_casting(id: String){
+        viewModelScope.launch {
+            filmDetail.value =service.casting_film(id, apikey)
+        }
+    }
+
+    fun serie_casting(id: String){
+        viewModelScope.launch {
+            serieDetail.value =service.casting_serie(id, apikey)
+        }
+    }
     }
 

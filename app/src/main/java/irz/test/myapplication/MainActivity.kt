@@ -43,6 +43,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 
 
 class MainActivity : ComponentActivity() {
@@ -190,18 +192,23 @@ class MainActivity : ComponentActivity() {
                     composable("Series") { Series(navController, viewmodel) }
                     composable("Acteurs") { Acteurs(navController, viewmodel) }
 
-                    composable("DetailFilm/{filmId}") {
-                        val id =it.arguments?.getString("filmId")?:""
-                        DetailFilm(
-                            navController,
-                            viewmodel,
-                            id
-                        )
+                    composable(
+                        "DetailFilm/{filmId}",
+                        arguments = listOf(navArgument("filmId") { type = NavType.IntType })) {
+                        backStackEntry ->
+                        val id = backStackEntry.arguments?.getInt("filmId")
+                        id?.let {
+                            DetailFilm(
+                                navController,
+                                viewmodel,
+                                id
+                            )
+                        }
                     }
                 }
             }
         }
     }
-    }
+}
 
 
