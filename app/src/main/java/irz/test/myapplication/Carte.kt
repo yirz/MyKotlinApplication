@@ -14,18 +14,19 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 
 
-
 @Composable
-fun Carte (
+fun Carte(
     modifier: Modifier,
     route: String,
     chemin_img: String?,
     titre: String,
     date: String?,
     navController: NavController
-    ) {
+) {
     androidx.compose.material3.Card(
-        modifier = modifier.fillMaxWidth().padding(15.dp)
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(15.dp)
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AsyncImage(
@@ -39,7 +40,7 @@ fun Carte (
                 modifier = Modifier
                     .width(180.dp),
             )
-            Text(text = date?:"")
+            Text(text = date ?: "")
         }
     }
 }

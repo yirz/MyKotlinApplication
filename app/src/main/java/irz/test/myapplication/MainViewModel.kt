@@ -11,7 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Query
 
 
-class MainViewModel (): ViewModel(){
+class MainViewModel() : ViewModel() {
 
     val apikey = "317519a83cc36ab9367ba50e5aa75b40"
 
@@ -39,18 +39,17 @@ class MainViewModel (): ViewModel(){
         }
     }
 
-    fun serie_detail(id: Int){
+    fun serie_detail(id: Int) {
         viewModelScope.launch {
             show.value = service.detail_serie(id, apikey)
         }
     }
 
-    fun acteur_detail(id: Int){
+    fun acteur_detail(id: Int) {
         viewModelScope.launch {
             actor.value = service.detail_acteur(id, apikey)
         }
     }
-
 
 
     val service = Retrofit.Builder()
@@ -59,48 +58,53 @@ class MainViewModel (): ViewModel(){
         .build()
         .create(TmdbAPI::class.java)
 
-    fun get_films_tendance(){
+    fun get_films_tendance() {
         viewModelScope.launch {
             movies.value = service.films_tendance(apikey).results
         }
-        }
-    fun get_acteurs_tendance(){
+    }
+
+    fun get_acteurs_tendance() {
         viewModelScope.launch {
             actors.value = service.acteurs_tendance(apikey).results
-            }
         }
-    fun get_series_tendance(){
+    }
+
+    fun get_series_tendance() {
         viewModelScope.launch {
             shows.value = service.series_tendance(apikey).results
         }
     }
-    fun recherche_films(query: String){
+
+    fun recherche_films(query: String) {
         viewModelScope.launch {
             movies.value = service.recherche_films(apikey, query).results
         }
     }
-    fun recherche_series(query: String){
+
+    fun recherche_series(query: String) {
         viewModelScope.launch {
             shows.value = service.recherche_series(apikey, query).results
         }
     }
-    fun recherche_acteurs(query: String){
+
+    fun recherche_acteurs(query: String) {
         viewModelScope.launch {
             actors.value = service.recherche_acteurs(apikey, query).results
         }
     }
 
-/*
-    fun film_casting(id: String){
-        viewModelScope.launch {
-            filmDetail.value =service.casting_film(id, apikey)
+    /*
+        fun film_casting(id: String){
+            viewModelScope.launch {
+                filmDetail.value =service.casting_film(id, apikey)
+            }
         }
-    }
 
-    fun serie_casting(id: String){
-        viewModelScope.launch {
-            serieDetail.value =service.casting_serie(id, apikey)
-        }
-    }*/
-    }
+        fun serie_casting(id: String){
+            viewModelScope.launch {
+                serieDetail.value =service.casting_serie(id, apikey)
+            }
+        }*/
+}
 

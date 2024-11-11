@@ -28,7 +28,7 @@ import androidx.navigation.NavController
 
 @Composable
 fun Screen(
-    navcontroller : NavController
+    navcontroller: NavController
 ) {
     Column(
 
@@ -46,14 +46,14 @@ fun Screen(
         LiensLinkedin()
         Spacer(modifier = Modifier.size(150.dp))
 
-        Button(onClick = {navcontroller.navigate("Films")}) {
+        Button(onClick = { navcontroller.navigate("Films") }) {
             Text(text = "demarrer")
         }
     }
 }
 
 @Composable
-fun PhotoPro(){
+fun PhotoPro() {
     Image(
         painterResource(id = R.drawable.pfp),
         contentDescription = "photo de profil",
@@ -65,17 +65,18 @@ fun PhotoPro(){
 
 @Composable
 fun Presentation() {
-    Column(horizontalAlignment = Alignment.CenterHorizontally){
-        Text(text="YANN IRZ")
-        Text(text= "Eleve en école d'ingénieur 4e année")
-        Text(text= "Ecole d'ingénieur ISIS - INU Champolion")
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = "YANN IRZ")
+        Text(text = "Eleve en école d'ingénieur 4e année")
+        Text(text = "Ecole d'ingénieur ISIS - INU Champolion")
     }
 }
 
 @Composable
 fun LiensMail() {
-    Row(){
-        Image(painterResource(id = R.drawable.gmail) ,
+    Row() {
+        Image(
+            painterResource(id = R.drawable.gmail),
             modifier = Modifier.size(20.dp),
             contentDescription = "logo gmail",
         )
@@ -84,13 +85,14 @@ fun LiensMail() {
 }
 
 @Composable
-fun  LiensLinkedin(){
+fun LiensLinkedin() {
     Row() {
-        Image(painterResource(id = R.drawable.linkedin) ,
+        Image(
+            painterResource(id = R.drawable.linkedin),
             modifier = Modifier.size(20.dp),
             contentDescription = "logo linkedin",
         )
-        Text(text=" linesverslinkedin.com")
+        Text(text = " linesverslinkedin.com")
     }
 }
 

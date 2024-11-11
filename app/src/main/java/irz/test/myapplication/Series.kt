@@ -18,9 +18,9 @@ import androidx.navigation.NavController
 
 @Composable
 fun Series(
-    navcontroller : NavController,
+    navcontroller: NavController,
     viewModel: MainViewModel,
-){
+) {
     val series by viewModel.shows.collectAsState()
 
     LaunchedEffect(true) {
@@ -43,7 +43,7 @@ fun Series(
 }
 
 @Composable
-fun CarteSeries(series : SerieDetail, navController: NavController, modifier: Modifier) {
+fun CarteSeries(series: SerieDetail, navController: NavController, modifier: Modifier) {
     Carte(
         modifier = modifier,
         route = "DetailSerie/" + series.id,

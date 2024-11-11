@@ -17,12 +17,13 @@ import androidx.navigation.NavController
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.grid.items
+
 //import androidx.media3.common.util.Log
 
 
 @Composable
 fun Films(
-    navcontroller : NavController,
+    navcontroller: NavController,
     viewModel: MainViewModel,
 ) {
     val films by viewModel.movies.collectAsState()
@@ -46,14 +47,15 @@ fun Films(
         }
     }
 }
-    @Composable
-    fun CarteFilm(film: FilmDetail, navController: NavController, modifier: Modifier) {
-        Carte(
-            modifier = modifier,
-            route = "DetailFilm/" + film.id,
-            chemin_img = film.poster_path,
-            titre = film.title,
-            date = film.release_date,
-            navController,
-        )
-    }
+
+@Composable
+fun CarteFilm(film: FilmDetail, navController: NavController, modifier: Modifier) {
+    Carte(
+        modifier = modifier,
+        route = "DetailFilm/" + film.id,
+        chemin_img = film.poster_path,
+        titre = film.title,
+        date = film.release_date,
+        navController,
+    )
+}

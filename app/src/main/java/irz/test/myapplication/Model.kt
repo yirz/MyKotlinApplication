@@ -180,6 +180,7 @@ data class Crew(
     val popularity: Double = 0.0,
     val profile_path: String = ""
 )
+
 data class Acteurs(
     val page: Int = 0,
     val results: List<Acteur> = listOf(),
@@ -198,8 +199,8 @@ data class Acteur(
     val original_name: String = "",
     val popularity: Double = 0.0,
     val profile_path: String = "",
-    val birthday: String="",
-    val biography: String=""
+    val birthday: String = "",
+    val biography: String = ""
 )
 
 data class ConnuPour(
@@ -244,6 +245,7 @@ data class Serie(
     val vote_average: Double = 0.0,
     val vote_count: Int = 0
 )
+
 data class Films(
     val page: Int = 0,
     val results: List<FilmDetail> = listOf(),
@@ -266,5 +268,5 @@ data class Film(
     val title: String = "",
     val video: Boolean = false,
     val vote_average: Double = 0.0,
-    val vote_count:Int=0
+    val vote_count: Int = 0
 )

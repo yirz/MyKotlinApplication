@@ -1,4 +1,5 @@
 package irz.test.myapplication
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,7 +18,7 @@ import androidx.navigation.NavController
 
 @Composable
 fun Acteurs(
-    navcontroller : NavController,
+    navcontroller: NavController,
     viewModel: MainViewModel,
 ) {
     val acteurs by viewModel.actors.collectAsState()
@@ -40,14 +41,15 @@ fun Acteurs(
         }
     }
 }
+
 @Composable
-    fun CarteActeur(acteur: Acteur, navController: NavController, modifier: Modifier) {
-        Carte(
-            route = "DetailActeur/" + acteur.id,
-            chemin_img = acteur.profile_path,
-            titre = acteur.name,
-            date = null,
-            navController = navController,
-            modifier = modifier
-        )
-    }
+fun CarteActeur(acteur: Acteur, navController: NavController, modifier: Modifier) {
+    Carte(
+        route = "DetailActeur/" + acteur.id,
+        chemin_img = acteur.profile_path,
+        titre = acteur.name,
+        date = null,
+        navController = navController,
+        modifier = modifier
+    )
+}
