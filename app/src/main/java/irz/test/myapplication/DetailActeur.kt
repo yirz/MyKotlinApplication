@@ -36,13 +36,12 @@ import irz.test.myapplication.Carte
 import irz.test.myapplication.Cast
 import irz.test.myapplication.MainViewModel
 
-
 @Composable
 fun DetailActeur(navController: NavController, viewModel: MainViewModel, id: Int) {
 
     val acteurDetail by viewModel.actor.collectAsState()
 
-    //LaunchedEffect(id) { viewModel.film_detail(id) }
+    LaunchedEffect(id) { viewModel.acteur_detail(id) }
 
     acteurDetail?.let { acteur ->
         Surface(
@@ -50,7 +49,7 @@ fun DetailActeur(navController: NavController, viewModel: MainViewModel, id: Int
             color = MaterialTheme.colorScheme.background
         ) {
             LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
-                /*
+
                 item {
                     Column {
                         Row {
@@ -59,15 +58,15 @@ fun DetailActeur(navController: NavController, viewModel: MainViewModel, id: Int
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Text(
-                                    text = film.title,
+                                    text = acteur.name,
                                     style = MaterialTheme.typography.headlineLarge,
                                     modifier = Modifier
                                         .padding(10.dp)
                                 )
 
                                 AsyncImage(
-                                    model = "https://image.tmdb.org/t/p/w500${film.poster_path}",
-                                    contentDescription = film.title
+                                    model = "https://image.tmdb.org/t/p/w500${acteur.profile_path}",
+                                    contentDescription = acteur.name
                                 )
                             }
                         }
@@ -87,38 +86,17 @@ fun DetailActeur(navController: NavController, viewModel: MainViewModel, id: Int
                                             .padding(top = 10.dp, start = 10.dp, bottom = 10.dp)
                                     )
                                     Text(
-                                        text = film.release_date,
+                                        text = acteur.birthday,
                                         style = MaterialTheme.typography.bodyMedium,
                                         modifier = Modifier
                                             .padding(top = 10.dp, start = 2.dp)
                                     )
                                 }
-                                Row {
-                                    Text(
-                                        text = "Genre(s) : ",
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        modifier = Modifier
-                                            .padding(
-                                                top = 10.dp,
-                                                start = 10.dp,
-                                                bottom = 10.dp
-                                            ),
-                                    )
-
-                                    film.genres.forEach() {
-                                        Text(
-                                            text = it.name + " ",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            modifier = Modifier
-                                                .padding(top = 10.dp, start = 2.dp),
-                                        )
-                                    }
-                                }
                             }
                         }
                         Row {
                             Text(
-                                text = "Synopsis",
+                                text = "Biographie",
                                 style = MaterialTheme.typography.headlineSmall,
                                 modifier = Modifier
                                     .padding(10.dp)
@@ -128,35 +106,15 @@ fun DetailActeur(navController: NavController, viewModel: MainViewModel, id: Int
 
                             Text(
 
-                                text = film.overview,
+                                text = acteur.biography,
 
                                 style = MaterialTheme.typography.bodyMedium,
                                 modifier = Modifier
                                     .padding(10.dp)
                             )
                         }
-                        Row {
-                            Text(
-                                text = "Têtes d'affiche",
-                                style = MaterialTheme.typography.headlineSmall,
-                                modifier = Modifier
-                                    .padding(10.dp)
-                            )
-                        }
-                        Column {
-                            film.credits.cast.forEach { cast ->
-                                Carte(
-                                    route = "DetailActeur/" + cast.id,
-                                    chemin_img = cast.profile_path,
-                                    titre = cast.name,
-                                    date = null,
-                                    navController = navController,
-                                    modifier = Modifier
-                                )
-                            }
-                        }
                     }
-                }*/
+                }
             }
         }
     }

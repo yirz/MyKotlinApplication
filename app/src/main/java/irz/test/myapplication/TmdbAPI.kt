@@ -29,4 +29,6 @@ interface TmdbAPI{
     @GET("tv/{serieId}?language=fr&append_to_response=credits")
     suspend fun detail_serie(@Path("serieId") serieId: Int, @Query("api_key") api_key: String): SerieDetail
 
+    @GET("person/{acteurId}?language=fr&append_to_response=credits")
+    suspend fun detail_acteur(@Path("acteurId") acteurId: Int, @Query("api_key") api_key: String): Acteur
    }

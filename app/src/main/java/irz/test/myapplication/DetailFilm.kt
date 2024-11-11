@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn

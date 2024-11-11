@@ -45,6 +45,12 @@ class MainViewModel (): ViewModel(){
         }
     }
 
+    fun acteur_detail(id: Int){
+        viewModelScope.launch {
+            actor.value = service.detail_acteur(id, apikey)
+        }
+    }
+
 
 
     val service = Retrofit.Builder()
