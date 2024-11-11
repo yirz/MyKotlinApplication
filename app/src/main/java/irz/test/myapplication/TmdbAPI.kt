@@ -23,15 +23,10 @@ interface TmdbAPI{
     @GET("search/person?")
     suspend fun recherche_acteurs(@Query("api_key") api_key: String, @Query("query") query:String): Acteurs
 
-    @GET("movie/{filmId}?language=fr")
+    @GET("movie/{filmId}?language=fr&append_to_response=credits")
     suspend fun detail_film(@Path("filmId") filmId : Int, @Query("api_key") api_key: String): FilmDetail
 
-    @GET("tv/{serieId}?language=fr")
-    suspend fun detail_serie(@Path("filmId") filmId: String?, @Query("api_key") api_key: String): Serie
+    @GET("tv/{serieId}?language=fr&append_to_response=credits")
+    suspend fun detail_serie(@Path("serieId") serieId: Int, @Query("api_key") api_key: String): SerieDetail
 
-    @GET("movie/{filmId}?append-to-response=credits&language=fr")
-    suspend fun casting_film(@Path("filmId") filmId: String?, @Query("api_key") api_key: String): FilmDetail
-
-    @GET("movie/{filmId}?append-to-response=credits&language=fr")
-    suspend fun casting_serie(@Path("serieId") serieId: String?, @Query("api_key") api_key: String): SerieDetail
-}
+   }

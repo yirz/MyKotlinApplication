@@ -35,7 +35,7 @@ fun Series(
         ) {
             items(series) { serie ->
                 CarteSeries(serie, navcontroller, modifier = Modifier.clickable {
-                    navcontroller.navigate("FilmDetail/" + serie.id)
+                    navcontroller.navigate("DetailSerie/" + serie.id)
                 })
             }
         }
@@ -43,10 +43,10 @@ fun Series(
 }
 
 @Composable
-fun CarteSeries(series : Serie, navController: NavController, modifier: Modifier) {
+fun CarteSeries(series : SerieDetail, navController: NavController, modifier: Modifier) {
     Carte(
-        modifier = Modifier,
-        route = "filmDetail/" + series.id,
+        modifier = modifier,
+        route = "DetailSerie/" + series.id,
         chemin_img = series.poster_path,
         titre = series.name,
         date = series.first_air_date,

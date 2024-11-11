@@ -194,8 +194,8 @@ class MainActivity : ComponentActivity() {
 
                     composable(
                         "DetailFilm/{filmId}",
-                        arguments = listOf(navArgument("filmId") { type = NavType.IntType })) {
-                        backStackEntry ->
+                        arguments = listOf(navArgument("filmId") { type = NavType.IntType })
+                    ) { backStackEntry ->
                         val id = backStackEntry.arguments?.getInt("filmId")
                         id?.let {
                             DetailFilm(
@@ -203,8 +203,38 @@ class MainActivity : ComponentActivity() {
                                 viewmodel,
                                 id
                             )
+
                         }
                     }
+
+                    composable(
+                        "DetailSerie/{serieId}",
+                        arguments = listOf(navArgument("serieId") { type = NavType.IntType })
+                    ) { backStackEntry ->
+                        val id = backStackEntry.arguments?.getInt("serieId")
+                        id?.let {
+                            DetailSerie(
+                                navController,
+                                viewmodel,
+                                id
+                            )
+                        }
+                    }
+
+                    composable(
+                        "DetailActeur/{acteurId}",
+                        arguments = listOf(navArgument("acteurId") { type = NavType.IntType })
+                    ) { backStackEntry ->
+                        val id = backStackEntry.arguments?.getInt("acteurId")
+                        id?.let {
+                            DetailActeur(
+                                navController,
+                                viewmodel,
+                                id
+                            )
+                        }
+                    }
+
                 }
             }
         }

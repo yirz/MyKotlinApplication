@@ -47,7 +47,7 @@ fun Films(
     }
 }
     @Composable
-    fun CarteFilm(film: Film, navController: NavController, modifier: Modifier) {
+    fun CarteFilm(film: FilmDetail, navController: NavController, modifier: Modifier) {
         Carte(
             modifier = modifier,
             route = "DetailFilm/" + film.id,

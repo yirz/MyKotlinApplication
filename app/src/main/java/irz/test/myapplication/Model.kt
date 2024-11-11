@@ -220,7 +220,7 @@ data class ConnuPour(
 
 data class Series(
     val page: Int = 0,
-    val results: List<Serie> = listOf(),
+    val results: List<SerieDetail> = listOf(),
     val total_pages: Int = 0,
     val total_results: Int = 0
 )
@@ -244,7 +244,7 @@ data class Serie(
 )
 data class Films(
     val page: Int = 0,
-    val results: List<Film> = listOf(),
+    val results: List<FilmDetail> = listOf(),
     val total_pages: Int = 0,
     val total_results: Int = 0
 )

@@ -15,24 +15,33 @@ class MainViewModel (): ViewModel(){
 
     val apikey = "317519a83cc36ab9367ba50e5aa75b40"
 
-    val movies = MutableStateFlow<List<Film>>(listOf())
+    val movies = MutableStateFlow<List<FilmDetail>>(listOf())
 
     val actors = MutableStateFlow<List<Acteur>>(listOf())
 
-    val shows = MutableStateFlow<List<Serie>>(listOf())
+    val shows = MutableStateFlow<List<SerieDetail>>(listOf())
 
     val movie = MutableStateFlow<FilmDetail?>(null)
 
-    val show = MutableStateFlow(Serie())
+    val show = MutableStateFlow<SerieDetail?>(null)
 
-    val filmDetail = MutableStateFlow(FilmDetail())
+    val actor = MutableStateFlow<Acteur?>(null)
 
-    val serieDetail = MutableStateFlow(SerieDetail())
+
+    //val filmDetail = MutableStateFlow(FilmDetail())
+
+    //val serieDetail = MutableStateFlow(SerieDetail())
 
 
     fun film_detail(id: Int) {
         viewModelScope.launch {
             movie.value = service.detail_film(id, apikey)
+        }
+    }
+
+    fun serie_detail(id: Int){
+        viewModelScope.launch {
+            show.value = service.detail_serie(id, apikey)
         }
     }
 
@@ -75,7 +84,7 @@ class MainViewModel (): ViewModel(){
         }
     }
 
-
+/*
     fun film_casting(id: String){
         viewModelScope.launch {
             filmDetail.value =service.casting_film(id, apikey)
@@ -86,6 +95,6 @@ class MainViewModel (): ViewModel(){
         viewModelScope.launch {
             serieDetail.value =service.casting_serie(id, apikey)
         }
-    }
+    }*/
     }
 
