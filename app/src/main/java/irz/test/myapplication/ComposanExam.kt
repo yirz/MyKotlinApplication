@@ -45,7 +45,7 @@ fun ComposanExam(
 fun CarteCollection(collection: collection, navController: NavController, modifier: Modifier) {
     Carte(
         route = null.toString(),
-        chemin_img = null,
+        chemin_img = collection.poster_path,
         titre = collection.name,
         date = null,
         navController = navController,
