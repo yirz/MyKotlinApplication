@@ -189,7 +189,7 @@ class MainActivity : ComponentActivity() {
                                 selected = currentDestination?.route == "ComposanExam",
                                 onClick = {
                                     navController.navigate("ComposanExam")
-                                    viewmodel.recherche_collection(query = "horor")
+                                    viewmodel.recherche_collection(query = "horror")
                                 }
                             )
                         }
