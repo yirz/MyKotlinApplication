@@ -49,4 +49,10 @@ interface TmdbAPI {
         @Path("acteurId") acteurId: Int,
         @Query("api_key") api_key: String
     ): Acteur
+
+    @GET("search/collection?")
+    suspend fun recherche_collection(
+        @Query("api_key") api_key: String,
+        @Query("query") query: String
+    ): collections
 }

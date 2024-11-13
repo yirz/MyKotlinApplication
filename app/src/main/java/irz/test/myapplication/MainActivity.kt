@@ -181,13 +181,15 @@ class MainActivity : ComponentActivity() {
                                     Image(
                                         painter = painterResource(id = R.drawable.examen),
                                         contentDescription = "logo Examen",
-                                        modifier = Modifier.size(35.dp)
+                                        modifier =Modifier
+                                            .size(35.dp)
                                     )
                                 },
                                 label = { Text("Examen") },
                                 selected = currentDestination?.route == "ComposanExam",
                                 onClick = {
                                     navController.navigate("ComposanExam")
+                                    viewmodel.recherche_collection(query = "horor")
                                 }
                             )
                         }

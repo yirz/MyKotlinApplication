@@ -27,6 +27,8 @@ class MainViewModel() : ViewModel() {
 
     val actor = MutableStateFlow<Acteur?>(null)
 
+    val collections = MutableStateFlow<List<collection>>(listOf())
+
 
     //val filmDetail = MutableStateFlow(FilmDetail())
 
@@ -94,17 +96,10 @@ class MainViewModel() : ViewModel() {
         }
     }
 
-    /*
-        fun film_casting(id: String){
-            viewModelScope.launch {
-                filmDetail.value =service.casting_film(id, apikey)
-            }
+    fun recherche_collection(query: String) {
+        viewModelScope.launch {
+            collections.value = service.recherche_collection(apikey, query).results
         }
-
-        fun serie_casting(id: String){
-            viewModelScope.launch {
-                serieDetail.value =service.casting_serie(id, apikey)
-            }
-        }*/
+    }
 }
 

@@ -270,14 +270,14 @@ data class Film(
     val vote_average: Double = 0.0,
     val vote_count: Int = 0
 )
-data class classeexam(
+data class collections(
     val page: Int,
-    val results: List<Result>,
+    val results: List<collection>,
     val total_pages: Int,
     val total_results: Int
 )
 
-data class Result(
+data class collection(
     val adult: Boolean,
     val backdrop_path: String,
     val id: Int,
