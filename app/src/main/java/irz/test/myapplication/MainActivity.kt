@@ -176,6 +176,20 @@ class MainActivity : ComponentActivity() {
                                     navController.navigate("Acteurs")
                                 }
                             )
+                            BottomNavigationItem(
+                                icon = {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.examen),
+                                        contentDescription = "logo Examen",
+                                        modifier = Modifier.size(35.dp)
+                                    )
+                                },
+                                label = { Text("Examen") },
+                                selected = currentDestination?.route == "ComposanExam",
+                                onClick = {
+                                    navController.navigate("ComposanExam")
+                                }
+                            )
                         }
                     }
                 }
@@ -191,6 +205,7 @@ class MainActivity : ComponentActivity() {
                     composable("Films") { Films(navController, viewmodel) }
                     composable("Series") { Series(navController, viewmodel) }
                     composable("Acteurs") { Acteurs(navController, viewmodel) }
+                    composable("ComposanExam"){ ComposanExam(navController, viewmodel)  }
 
                     composable(
                         "DetailFilm/{filmId}",
